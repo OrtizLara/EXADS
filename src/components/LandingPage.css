@@ -1,0 +1,65 @@
+.blur-background {
+    background-image: url("../assets/background.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw; 
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden; 
+  }
+  
+  .blur-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit; 
+    background-size: inherit;
+    background-position: inherit;
+    filter: blur(30px); 
+    opacity: 0.6; 
+    z-index: 1; 
+  }
+  
+  .content {
+    position: relative; 
+    z-index: 2;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+  }
+
+.footer {
+    position: absolute; 
+    bottom: 1rem; 
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif; 
+    font-weight: 400;
+    font-size: 16px; 
+    line-height: 18.75px; 
+    color: rgba(255, 255, 255, 1); 
+    z-index: 2;
+  }
+  
+  .footer-link {
+    color: rgba(255, 255, 255, 1); 
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  .footer-link:hover {
+    text-decoration: underline; 
+  }
+  
+  .separator {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 1);
+  }
+  
