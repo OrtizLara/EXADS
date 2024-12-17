@@ -1,0 +1,53 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .watch-now-container {
+    background: white;
+    border: 10px solid rgba(97, 214, 182, 1);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .watch-now-container h2 {
+    color: rgba(97, 214, 182, 1);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .watch-now-container p {
+    color: #000; 
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .watch-now-button {
+    background-color: #f04f23;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .watch-now-button:hover {
+    background-color: #d9441e;
+  }
+  
