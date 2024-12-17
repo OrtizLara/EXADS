@@ -1,27 +1,28 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import Header from "./header/Header";
+import QuizComponent from "./quizComponent/QuizComponent";
 import "./LandingPage.css";
 
 const LandingPage = () => {
   return (
     <div className="blur-background">
-      <div className="content">
-     </div>
+      
+                <Header />
 
-<footer className="footer">
-  <a href="https://www.linkedin.com/in/lara-ortiz-b5b56b1a8/" 
-     className="footer-link" 
-     target="_blank" 
-     rel="noopener noreferrer">
-    Privacy Policy
-  </a>
-  <span className="separator">|</span>
-  <a href="https://www.linkedin.com/in/lara-ortiz-b5b56b1a8/" 
-     className="footer-link" 
-     target="_blank" 
-     rel="noopener noreferrer">
-    Terms of Use
-  </a>
-</footer>
-
+                <div className="content" style={{ marginTop: "-75px" }}>
+                <QuizComponent/>
+      </div>
+      
+      <footer className="footer">
+        <a href="#" className="footer-link">
+          Privacy Policy
+        </a>
+        <span className="separator">|</span>
+        <a href="#" className="footer-link">
+          Terms of Use
+        </a>
+      </footer>
     </div>
   );
 };
