@@ -1,4 +1,10 @@
+.content {
+  margin-top: 100px; 
+  position: relative;
+  z-index: 2; 
+}
 .quiz-container {
+  position: relative;
   text-align: center;
   color: white;
   padding: 40px 20px;
@@ -6,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100vh; 
+  z-index: 1; 
 }
 
 .quiz-progress {
