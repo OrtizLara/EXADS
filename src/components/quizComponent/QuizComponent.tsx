@@ -61,29 +61,36 @@ const questions = [
 
 const QuizComponent: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [currentMovieIndex, setCurrentMovieIndex] = useState<number>(0);
   const [lastMovieSelected, setLastMovieSelected] = useState<Movie | null>(null);
   const [showFinalScreen, setShowFinalScreen] = useState<boolean>(false);
+
+  const movies = questions[currentQuestion].movies;
 
   const handleMovieClick = (movie: Movie) => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setCurrentMovieIndex(0);
     } else {
-      setLastMovieSelected(movie); 
+      setLastMovieSelected(movie);
       setShowFinalScreen(true);
     }
   };
 
-  const handleRedirect = () => {
-    if (lastMovieSelected) {
-      const imdbUrl = imdbLinks[lastMovieSelected.title];
-      window.location.href = imdbUrl;
-    }
+  const nextMovie = () => {
+    setCurrentMovieIndex((prevIndex) => (prevIndex + 1) % movies.length);
+  };
+
+  const prevMovie = () => {
+    setCurrentMovieIndex((prevIndex) =>
+      prevIndex === 0 ? movies.length - 1 : prevIndex - 1
+    );
   };
 
   return (
     <div className="quiz-container">
       {showFinalScreen ? (
-        <WatchNow onRedirect={handleRedirect} />
+        <WatchNow onRedirect={() => window.location.href = imdbLinks[lastMovieSelected?.title || ""]} />
       ) : (
         <>
           <div className="quiz-progress">
@@ -102,16 +109,28 @@ const QuizComponent: React.FC = () => {
 
           <h2 className="question">{questions[currentQuestion].text}</h2>
 
-          <div className="movies">
-            {questions[currentQuestion].movies.map((movie) => (
-              <div
-                key={movie.id}
-                className="movie-card"
-                onClick={() => handleMovieClick(movie)}
-              >
-                <img src={movie.image} alt={movie.title} className="movie-image" />
-              </div>
-            ))}
+          <div className="movies-container">
+            <button className="nav-button left" onClick={prevMovie}>
+              &#8249;
+            </button>
+
+            <div className="movies">
+              {movies.map((movie, index) => (
+                <div
+                  key={movie.id}
+                  className={`movie-card ${
+                    index === currentMovieIndex ? "active" : ""
+                  }`}
+                  onClick={() => handleMovieClick(movie)}
+                >
+                  <img src={movie.image} alt={movie.title} className="movie-image" />
+                </div>
+              ))}
+            </div>
+
+            <button className="nav-button right" onClick={nextMovie}>
+              &#8250;
+            </button>
           </div>
         </>
       )}
